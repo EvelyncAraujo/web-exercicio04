@@ -3,8 +3,7 @@ import{ ref } from 'vue'
   const contador = ref(0)
   let v1 = ref(0);  
   let v2 = ref(0);
-
-
+  let mostrardiv = ref(true)
   function soma() {
       return `A soma  é ${(v2.value * 1) + (v1.value)*1}`
     }
@@ -36,7 +35,8 @@ import{ ref } from 'vue'
         <p>{{ soma() }}</p>
         
     <div v-if="v1+v2> 10" class="verde">É maior que 10</div>
-    <div v-else-if=" v1+v2 < 10" class="vermelho">É menor que 10</div>
+    <div v-else-if="soma == 10" class="amarelo">A soma é igual a 10</div>
+    <div v-else-if="soma < 10" class="vermelho">A soma é menor que 10</div>
 </div>
 
 <div class="parImpar">
@@ -47,19 +47,28 @@ import{ ref } from 'vue'
         <input v-model="v1">
         <input v-model="v2">
         <p>{{ par() }}</p>
-        <div v-if="v1 & v2 <= par" class="verde">É Par</div>
+        <div v-if="v1 & v2 %2===0" class="verde">É Par</div>
       <div v-else class="vermelho">É Ímpar</div>
 </div>
 
 <div class="booleano">
 
-
+  <button @click="mostrardiv = !mostrardiv">Clique para ver a mensagem secreta</button>
+    <div v-if="mostrardiv">Funk cura a depressão</div>
 </div>
 </template>
 
 
 
 <style scoped>
+button{
+  background-color: rgb(119, 49, 49);
+  border-radius: 5px;
+  border: none;
+  margin-left: 1rem;
+  font-size: 15px;
+}
+
 .booleano{
   background-color: rgb(105, 53, 53);
   padding: 50px 30px;
@@ -67,7 +76,6 @@ import{ ref } from 'vue'
   border-radius: 10px;
   margin: 40px 20px;
 }
-
 .parImpar{
   background-color: rgb(105, 53, 53);
   padding: 50px 30px;
