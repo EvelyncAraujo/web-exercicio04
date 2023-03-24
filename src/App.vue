@@ -1,67 +1,67 @@
 <script setup>
-import{ ref } from 'vue' 
-  const contador = ref(0)
-  let v1 = ref(0);  
-  let v2 = ref(0);
-  let mostrardiv = ref(true)
-  function soma() {
-      return `A soma  é ${(v2.value * 1) + (v1.value)*1}`
-    }
-    function par(){
-      if (soma() % 2 === 0){
-        return `A soma é par`
-      }
-      }
-    
+import { ref } from 'vue'
+const contador = ref(0)
+let v1 = ref(0);
+let v2 = ref(0);
+let mostrardiv = ref(true)
+function soma() {
+  return `A soma  é ${(v2.value * 1) + (v1.value) * 1}`
+}
+function par() {
+  if (soma() % 2 === 0) {
+    return `A soma é par`
+  }
+}
+
 </script>
 
 <template>
-     <div class="info">
-      contador:{{ contador }}
-      <button @click="contador++">+</button>
-      <button @click="contador--">-</button>
-      <div v-if="contador> 10" class="verde">É maior que 10</div>
-      <div v-else-if="contador <10" class="vermelho">É menor que 10</div>
-      <div v-else class="amarelo">É 10 </div>
- </div>
+  <div class="info">
+    contador:{{ contador }}
+    <button @click="contador++">+</button>
+    <button @click="contador--">-</button>
+    <div v-if="contador > 10" class="verde">É maior que 10</div>
+    <div v-else-if="contador < 10" class="vermelho">É menor que 10</div>
+    <div v-else class="amarelo">É 10 </div>
+  </div>
 
-<div class="soma">
-  <P class="texto">
+
+  <div class="soma">
+    <P class="texto">
       Informe dois números (Obs: tire os zeros)
     </P>
 
-        <input v-model="v1">
-        <input v-model="v2">
-        <p>{{ soma() }}</p>
-        
-    <div v-if="v1+v2> 10" class="verde">É maior que 10</div>
+    <input v-model="v1">
+    <input v-model="v2">
+    <p>{{ soma() }}</p>
+
+    <div v-if="v1 + v2 > 10" class="verde">É maior que 10</div>
     <div v-else-if="soma == 10" class="amarelo">A soma é igual a 10</div>
     <div v-else-if="soma < 10" class="vermelho">A soma é menor que 10</div>
-</div>
+  </div>
 
-<div class="parImpar">
-  <P class="texto">
+  <div class="parImpar">
+    <P class="texto">
       Informe dois números (Obs: tire os zeros)
     </P>
+    <input v-model="v1">
+    <input v-model="v2">
+    <p>{{ par() }}</p>
+    <div v-if="v1 & v2 % 2 === 0" class="verde">É Par</div>
+    <div v-else class="vermelho">É Ímpar</div>
+  </div>
 
-        <input v-model="v1">
-        <input v-model="v2">
-        <p>{{ par() }}</p>
-        <div v-if="v1 & v2 %2===0" class="verde">É Par</div>
-      <div v-else class="vermelho">É Ímpar</div>
-</div>
+  <div class="booleano">
 
-<div class="booleano">
-
-  <button @click="mostrardiv = !mostrardiv">Clique para ver a mensagem secreta</button>
-    <div v-if="mostrardiv">Funk cura a depressão</div>
-</div>
+    <button @click="mostrardiv = !mostrardiv">Clique para ver a mensagem secreta</button>
+    <div v-if="mostrardiv">Yuri perfeito na seleção</div>
+  </div>
 </template>
 
 
 
 <style scoped>
-button{
+button {
   background-color: rgb(119, 49, 49);
   border-radius: 5px;
   border: none;
@@ -69,27 +69,30 @@ button{
   font-size: 15px;
 }
 
-.booleano{
+.booleano {
   background-color: rgb(105, 53, 53);
   padding: 50px 30px;
   color: rgb(183, 210, 219);
   border-radius: 10px;
   margin: 40px 20px;
 }
-.parImpar{
+
+.parImpar {
   background-color: rgb(105, 53, 53);
   padding: 50px 30px;
   color: rgb(183, 210, 219);
   border-radius: 10px;
   margin: 40px 20px;
 }
-.soma{
+
+.soma {
   background-color: rgb(105, 53, 53);
   padding: 20px 30px;
   color: rgb(183, 210, 219);
   border-radius: 10px;
   margin: 0 20px;
 }
+
 .info {
   background-color: rgb(105, 53, 53);
   padding: 10px 30px;
@@ -97,18 +100,22 @@ button{
   border-radius: 10px;
   margin: 0 20px;
 }
+
 h1 {
   color: white;
   font-weight: bold;
   font-size: 1.5em;
 }
-.verde{
-    color: rgb(12, 58, 12);
+
+.verde {
+  color: rgb(12, 58, 12);
 }
-.vermelho{
-    color: rgb(71, 8, 8);
+
+.vermelho {
+  color: rgb(71, 8, 8);
 }
-.amarelo{
-    color: rgb(187, 187, 0);
-}
-</style>
+
+.amarelo {
+  color: rgb(187, 187, 0);
+}</style>
+
